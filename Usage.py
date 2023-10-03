@@ -16,8 +16,11 @@ address_pattern =\
     f'^(?P<book>(?:{book_prefix_number} )?{book_name}|{book_number}(?!\\d)) ' \
     f'(?:{standalone}|(?:{chapter}:)?{versification})$'
 
-while 1:
-    address = BibleAddress(input(), address_pattern, "New Kings James Version.json",
-                           lar['library'], lar['single_chapter_books'])
+
+while 1:  # Take verse addresses (e.g. John 1:31, Jude 1, James 1:2, 5, 6-5) as input and print
+    address = BibleAddress(
+        input(), address_pattern, "New Kings James Version.json", lar['library'], lar['single_chapter_books']
+    )
+
     for y, x in enumerate(address.contents()):
         print(x)
